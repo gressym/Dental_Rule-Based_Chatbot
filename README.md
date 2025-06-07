@@ -20,8 +20,15 @@ dental_clinic_chatbot/
 ## 💬 Features
 
 - Greets users and responds to common dental clinic queries.
+- - Answers at least 5 preset FAQs like:
+  - What are your working hours?
+  - Where is the clinic located?
+  - What services do you offer?
+  - Do you accept insurance?
+  - How to book an appointment?
 - Handles unknown questions with a polite default response.
 - Supports appointment booking via a conversational form.
+- **(New)** Saves all booked appointments in an Excel file (`appointments.xlsx`).
 - Simple, keyword-based rule engine — no machine learning.
 - Cleanly structured with clear function separation for logic and UI.
 
@@ -44,7 +51,7 @@ dental_clinic_chatbot/
 ### 📦 Step 1: Install Dependencies
 
 ```bash
-pip install streamlit
+pip install streamlit pandas openpyxl
 ```
 
 ### ▶️ Step 2: Run the Chatbot UI
@@ -69,7 +76,12 @@ streamlit run app.py
 - Contains the chatbot logic via `get_response(user_input)`
 - Uses `if-else` and keyword matching to answer questions
 - Includes a `book_appointment()` function for handling multi-step inputs
-
+- Includes `save_appointment_to_excel()` function:
+   - Checks if `appointments.xlsx ` file exists
+   - If not, creates the file with appropriate headers
+   - Appends the new appointment details (Name, Date, Time, Mobile, Timestamp) as a new row
+   - Uses pandas and openpyxl to manage Excel file operations
+  
 ### `frontend.py`:
 - Streamlit UI to interface with the chatbot
 - Uses forms to take structured input for appointments

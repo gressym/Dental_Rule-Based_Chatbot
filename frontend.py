@@ -1,6 +1,6 @@
 
 import streamlit as st
-from chatbot import get_response
+from chatbot import get_response, save_appointment_to_excel
 
 st.set_page_config(page_title="Dental Clinic Chatbot", layout="centered")
 st.title("🦷 Dental Clinic Chatbot")
@@ -25,6 +25,7 @@ if user_input:
             submit = st.form_submit_button("Confirm Appointment")
 
             if submit:
+                save_appointment_to_excel(name, date, time, mobile)
                 st.success(f"Appointment booked for {name} on {date} at {time}. We will confirm via {mobile}.")
                 st.session_state.history.append(("Bot", f"Appointment booked for {name} on {date} at {time}."))
     else:

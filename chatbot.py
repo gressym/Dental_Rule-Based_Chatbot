@@ -1,5 +1,34 @@
 # A simple rule-based chatbot for a dental clinic
 
+import os
+import pandas as pd
+from datetime import datetime
+
+def save_appointment_to_excel(name, date, time, mobile, filename="appointments.xlsx"):
+    """
+    Save the appointment details to an Excel file.
+    Creates the file if it doesn't exist, appends if it does.
+    """
+    new_entry = pd.DataFrame([{
+        "Name": name,
+        "Date": str(date),
+        "Time": str(time),
+        "Mobile": mobile,
+        "Booked At": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }])
+
+    if os.path.exists(filename):
+        try:
+            existing = pd.read_excel(filename)
+            updated = pd.concat([existing, new_entry], ignore_index=True)
+        except Exception:
+            updated = new_entry  # fallback if corrupted
+    else:
+        updated = new_entry
+
+    updated.to_excel(filename, index=False)
+
+
 def get_response(user_input):
     """
     This function takes a user's question as input and returns a response based on keywords.
@@ -56,6 +85,7 @@ def book_appointment():
     mobile = input("> ")
 
     print(f"Thank you! Your appointment is scheduled for {date} at {time}. We will send you a confirmation message shortly.")
+    save_appointment_to_excel(name, date, time, mobile)
 
 def main():
     """

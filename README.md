@@ -1,5 +1,3 @@
-
-
 #  Dental_RuleBased_Chatbot
 
 A simple **rule-based chatbot** built using **Python** and **Streamlit** that helps users interact with a virtual dental assistant. It answers frequently asked questions and assists with appointment bookings.

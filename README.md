@@ -12,6 +12,7 @@ A simple **rule-based chatbot** built using **Python** and **Streamlit** that he
 dental_clinic_chatbot/
 ├── chatbot.py          # Core chatbot logic (rule-based)
 ├── frontend.py         # Streamlit UI interface for the chatbot
+├── appointments.xlsx   # Excel file auto-generated to store bookings  
 ├── README.md           # Project overview and instructions
 ```
 
@@ -28,7 +29,7 @@ dental_clinic_chatbot/
   - How to book an appointment?
 - Handles unknown questions with a polite default response.
 - Supports appointment booking via a conversational form.
-- **(New)** Saves all booked appointments in an Excel file (`appointments.xlsx`).
+- Saves all booked appointments in an Excel file (`appointments.xlsx`).
 - Simple, keyword-based rule engine — no machine learning.
 - Cleanly structured with clear function separation for logic and UI.
 

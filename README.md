@@ -56,7 +56,7 @@ pip install streamlit pandas openpyxl
 ### ▶️ Step 2: Run the Chatbot UI
 
 ```bash
-streamlit run app.py
+streamlit run frontend.py
 ```
 
 ### ✅ Frequent Questions can be like this !
